@@ -12,8 +12,10 @@ source_file = ARGV[2]
 id = ARGV[3]
 
 obj = s3.bucket(bucket).object(key)
-obj.put({
+option = {
   body: source_file,
   grant_full_control: "id=" + id,
   server_side_encryption: "AES256"
-})
+}
+print ("option = " + option.to_s + "\n")
+obj.put(option)
